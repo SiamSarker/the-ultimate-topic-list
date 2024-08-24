@@ -47,6 +47,19 @@ import {
 } from "../utils/topicList";
 import { useTopicListColorMode } from "../lib/hooks";
 
+const suppressedWarnings = [
+  'validateDOMNesting(...): <div> cannot appear as a descendant of <p>',
+];
+
+const originalConsoleError = console.error;
+console.error = (...args) => {
+  if (
+    !args.some(arg => suppressedWarnings.some(warning => arg.includes(warning)))
+  ) {
+    originalConsoleError(...args);
+  }
+};
+
 const getTopicIndex = (topic_id) => {
   let index = 0;
   for (let category of topicList) {
