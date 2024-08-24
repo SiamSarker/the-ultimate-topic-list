@@ -29,6 +29,7 @@ const NavLink = ({ href, isExternal, children, isBold }) => {
 };
 
 export default function Navbar() {
+  console.log("This is a navbar");
   const isMobile = useBreakpointValue({ base: true, md: false });
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -60,7 +61,7 @@ export default function Navbar() {
                       textShadow="0.1em 0.1em 0.15em rgba(0, 0, 0, 0.4)"
                       color="whiteAlpha.900"
                     >
-                      The Ultimate Topic List
+                      The Ultimate Topic List | Test by Siam
                     </Text>
                   </Heading>
                 </Flex>
